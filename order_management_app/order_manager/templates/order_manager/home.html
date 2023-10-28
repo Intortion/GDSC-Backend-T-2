@@ -7,9 +7,10 @@
                 <a class="mr-2" href="#">Order No: {{ order.order_num }}</a>
             </div>
             <h2><a class="article-title" href="#">{{ order.creator }}</a></h2>
-            <p class="article-content">Date Ordered: {{ order.date_ordered|date:"d F, Y" }}</p>
-            <p class="article-content">Shipping Address: {{ shipping_address.address}}, {{ shipping_address.city }}, {{ shipping_address.state }}, pin-{{ shipping_address.zipcode }}</p>
             <p class="article-content">Expected Delivery: {{ order.delivery_date|date:"d F, Y" }}</p>
+            <p class="article-content">Shipping Address: {{ order.address}}</p>
+            <p class="article-content">Date Ordered: {{ order.date_ordered|date:"d F, Y" }}</p>
+            
             </div>
         </article>
 

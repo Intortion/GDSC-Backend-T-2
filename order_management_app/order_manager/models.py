@@ -8,6 +8,7 @@ class Order(models.Model):
     delivery_date = models.DateTimeField(max_length=100, null=True, blank=True)
     complete = models.BooleanField(default=False, null = True, blank=True)
     order_num = models.IntegerField(default=0, null=0, blank=True)
+    address = models.CharField(max_length=400, null=True)
 
     def __str__(self):
         return str(self.order_num)
@@ -29,15 +30,3 @@ class OrderItem(models.Model):
     def get_total(self):
         total = self.price * self.quantity
         return total
-
-class ShippingAddress(models.Model):
-    creator = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
-    address = models.CharField(max_length=200, null=True)
-    city = models.CharField(max_length=200, null=True)
-    state = models.CharField(max_length=200, null=True)
-    zipcode = models.CharField(max_length=200, null=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.address
